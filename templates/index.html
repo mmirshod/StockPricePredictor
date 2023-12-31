@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+  <div id="predictor" class="h-screen md:flex" style="background: #1F2937FF !important;">
+    <div style="padding-left: 10px"
+      class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
+      <div>
+        <h1 class="text-white font-bold text-4xl font-sans">Gold Stock</h1>
+        <p class="text-white mt-1">ML Model based on Linear Regression and Regularized with Ridge Regression.<br/>Trained on Yahoo Finance's stock prices from 2008 to 2023</p>
+      </div>
+      <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+      <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+      <div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+      <div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+    </div>
+    <div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
+      <form action="/predict" method="POST">
+        <h1 class="text-gray-800 font-bold text-2xl mb-1">Welcome!</h1>
+        <p class="text-sm font-normal text-gray-600 mb-7">Input necessary information in boxes below</p>
+        <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+          <input step="0.01" class="pl-2 outline-none border-none" type="number" name="Open" id="open" placeholder="Open" />
+        </div>
+        <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+          <input step="0.01"  class="pl-2 outline-none border-none" type="number" name="Low" id="low" placeholder="Low" />
+        </div>
+        <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+          <input step="0.01"  class="pl-2 outline-none border-none" type="number" name="High" id="high" placeholder="High" />
+        </div>
+        <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
+          <input step="0.01"  class="pl-2 outline-none border-none" type="number" name="Volume" id="volume" placeholder="Volume" />
+        </div>
+        <button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Predict Close</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
